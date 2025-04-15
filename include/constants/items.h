@@ -992,12 +992,24 @@
 #define ITEM_TWICE_SPICED_RADISH 826
 #define ITEM_POKESHI_DOLL 827
 
-#define ITEM_STRANGE_BALL 828
+//IV ITEMS
+#define ITEM_HP_IV_VITAMIN 828
+#define ITEM_ATKUP_IV_VITAMIN 829
+#define ITEM_ATKDWN_IV_VITAMIN 830
+#define ITEM_DEF_IV_VITAMIN 831
+#define ITEM_SPATK_IV_VITAMIN 832
+#define ITEM_SPDEF_IV_VITAMIN 833
+#define ITEM_SPDUP_IV_VITAMIN 834
+#define ITEM_SPDDWN_IT_VITAMIN 835
+
+#define ITEM_STRANGE_BALL 836
 
 // HOPO BERRY
 // LEGEND PLATE
 
-#define ITEMS_COUNT 829
+
+
+#define ITEMS_COUNT 837
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
 // A special item id associated with "Cancel"/"Exit" etc. in a list of items or decorations

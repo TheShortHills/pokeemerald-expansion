@@ -18,6 +18,14 @@ OldaleTown_Mart_Pokemart_Basic:
 	.2byte ITEM_ANTIDOTE
 	.2byte ITEM_PARALYZE_HEAL
 	.2byte ITEM_AWAKENING
+	.2byte ITEM_HP_IV_VITAMIN
+	.2byte ITEM_ATKUP_IV_VITAMIN
+	.2byte ITEM_ATKDWN_IV_VITAMIN
+	.2byte  ITEM_DEF_IV_VITAMIN 
+    .2byte  ITEM_SPATK_IV_VITAMIN 
+    .2byte  ITEM_SPDEF_IV_VITAMIN 
+    .2byte  ITEM_SPDUP_IV_VITAMIN 
+    .2byte  ITEM_SPDDWN_IT_VITAMIN 
 	pokemartlistend
 
 OldaleTown_Mart_ExpandedItems::

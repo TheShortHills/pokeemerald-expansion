@@ -53,7 +53,7 @@ PetalburgCity_PokemonCenter_1F_EventScript_SayTorchicType::
 PetalburgCity_PokemonCenter_1F_EventScript_SayMudkipType::
 	msgbox PetalburgCity_PokemonCenter_1F_Text_MudkipIsWaterType, MSGBOX_DEFAULT
 	return
-
+	
 PetalburgCity_PokemonCenter_1F_Text_PCStorageSystem:
 	.string "That PC-based POKéMON Storage\n"
 	.string "System…\p"

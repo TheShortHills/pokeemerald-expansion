@@ -14099,4 +14099,140 @@ const struct Item gItemsInfo[] =
         .iconPic = gItemIcon_PokeshiDoll,
         .iconPalette = gItemIconPalette_PokeshiDoll,
     },
+
+    [ITEM_HP_IV_VITAMIN] =
+    {
+        .name = _("HP IV Vitamin"),
+        .price = 100,
+        .description = COMPOUND_STRING(
+            "Raises the HP\n"
+            "IVs of one\n"
+            "Pokémon to 31."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .secondaryId = STAT_HP,
+        .fieldUseFunc = ItemUseOutOfBattle_IncreaseIV,
+        .flingPower = 30,
+        .iconPic = gItemIcon_HPUp,
+        .iconPalette = gItemIconPalette_HPUp,
+    },
+
+    [ITEM_ATKUP_IV_VITAMIN] =
+    {
+        .name = _("ATK UP IV Vitamin"),
+        .price = 100,
+        .description = COMPOUND_STRING(
+            "Raises the Attack\n"
+            "IVs of one\n"
+            "Pokémon to 31."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .secondaryId = STAT_ATK,
+        .fieldUseFunc = ItemUseOutOfBattle_IncreaseIV,
+        .flingPower = 30,
+        .iconPic = gItemIcon_Vitamin,
+        .iconPalette = gItemIconPalette_Protein,
+    },
+
+    [ITEM_ATKDWN_IV_VITAMIN] =
+    {
+        .name = _("ATK DWN IV Vitamin"),
+        .price = 100,
+        .description = COMPOUND_STRING(
+            "Lowers the Attack\n"
+            "IVs of one\n"
+            "Pokémon to 0."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .secondaryId = STAT_ATK,
+        .fieldUseFunc = ItemUseOutOfBattle_ReduceIV,
+        .flingPower = 30,
+        .iconPic = gItemIcon_Vitamin,
+        .iconPalette = gItemIconPalette_Protein,
+    },
+
+    [ITEM_DEF_IV_VITAMIN] =
+    {
+        .name = _("DEF IV Vitamin"),
+        .price = 100,
+        .description = COMPOUND_STRING(
+            "Raises the Defense\n"
+            "IVs of one\n"
+            "Pokémon to 31."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .secondaryId = STAT_DEF,
+        .fieldUseFunc = ItemUseOutOfBattle_IncreaseIV,
+        .flingPower = 30,
+        .iconPic = gItemIcon_Vitamin,
+        .iconPalette = gItemIconPalette_Iron,
+    },
+
+    [ITEM_SPATK_IV_VITAMIN] =
+    {
+        .name = _("SP. ATK IV Vitamin"),
+        .price = 100,
+        .description = COMPOUND_STRING(
+            "Raises the Sp. Atk\n"
+            "IVs of one\n"
+            "Pokémon to 31."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .secondaryId = STAT_SPATK,
+        .fieldUseFunc = ItemUseOutOfBattle_IncreaseIV,
+        .flingPower = 30,
+        .iconPic = gItemIcon_Vitamin,
+        .iconPalette = gItemIconPalette_Calcium,
+    },
+
+    [ITEM_SPDEF_IV_VITAMIN] =
+    {
+        .name = _("SP. DEF IV Vitamin"),
+        .price = 100,
+        .description = COMPOUND_STRING(
+            "Raises the Sp. Def\n"
+            "IVs of one\n"
+            "Pokémon to 31."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .secondaryId = STAT_SPDEF,
+        .fieldUseFunc = ItemUseOutOfBattle_IncreaseIV,
+        .flingPower = 30,
+        .iconPic = gItemIcon_Vitamin,
+        .iconPalette = gItemIconPalette_Zinc,
+    },
+
+    [ITEM_SPDUP_IV_VITAMIN] =
+    {
+        .name = _("SPD UP IV Vitamin"),
+        .price = 100,
+        .description = COMPOUND_STRING(
+            "Raises the Speed\n"
+            "IVs of one\n"
+            "Pokémon to 31."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .secondaryId = STAT_SPEED,
+        .fieldUseFunc = ItemUseOutOfBattle_IncreaseIV,
+        .flingPower = 30,
+        .iconPic = gItemIcon_Vitamin,
+        .iconPalette = gItemIconPalette_Carbos,
+    },
+
+    [ITEM_SPDDWN_IT_VITAMIN] =
+    {
+        .name = _("SPD DWN IV Vitamin"),
+        .price = 100,
+        .description = COMPOUND_STRING(
+            "Lowers the Speed\n"
+            "IVs of one\n"
+            "Pokémon to 0."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .secondaryId = STAT_SPEED,
+        .fieldUseFunc = ItemUseOutOfBattle_ReduceIV,
+        .flingPower = 30,
+        .iconPic = gItemIcon_Vitamin,
+        .iconPalette = gItemIconPalette_Carbos,
+    },
 };
