@@ -1567,7 +1567,7 @@ static void Task_PCMainMenu(u8 taskId)
                 AddTextPrinterParameterized2(0, FONT_NORMAL, gText_PartyFull, 0, NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
                 task->tState = STATE_ERROR_MSG;
             }
-            else if (task->tInput == OPTION_DEPOSIT && CountPartyMons() == 1)
+            else if (task->tInput == OPTION_DEPOSIT && CountPartyMons() < 3)
             {
                 // Can't deposit
                 FillWindowPixelBuffer(0, PIXEL_FILL(1));
@@ -6818,7 +6818,7 @@ static void SetMonMarkings(u8 markings)
 
 static bool8 IsRemovingLastPartyMon(void)
 {
-    if (sCursorArea == CURSOR_AREA_IN_PARTY && !sIsMonBeingMoved && CountPartyAliveNonEggMonsExcept(sCursorPosition) == 0)
+    if (sCursorArea == CURSOR_AREA_IN_PARTY && !sIsMonBeingMoved && CountPartyAliveNonEggMonsExcept(sCursorPosition) < 2 )
         return TRUE;
     else
         return FALSE;
