@@ -130,6 +130,15 @@ LittlerootTown_ProfessorBirchsLab_EventScript_NicknameStarter::
 	end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_GoSeeRival::
+	bufferspeciesname STR_VAR_1, SPECIES_EEVEE
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_EEVEE
+	givemon SPECIES_EEVEE, 5
+	bufferspeciesname STR_VAR_1, SPECIES_SHROOMISH
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_SHROOMISH
+	givemon SPECIES_SHROOMISH, 5
+	bufferspeciesname STR_VAR_1, SPECIES_SLAKOTH
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_SLAKOTH
+	givemon SPECIES_SLAKOTH, 5
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_MightBeGoodIdeaToGoSeeRival, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, LittlerootTown_ProfessorBirchsLab_EventScript_AgreeToSeeRival
 	goto_if_eq VAR_RESULT, NO, LittlerootTown_ProfessorBirchsLab_EventScript_DeclineSeeingRival
