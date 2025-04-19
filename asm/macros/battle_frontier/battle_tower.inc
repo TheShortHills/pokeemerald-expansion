@@ -129,7 +129,6 @@
 	setvar VAR_0x8004, SPECIAL_BATTLE_VGC
 	special DoSpecialTrainerBattle
 	waitstate
-	settrainerflag \trainer1Id
 	setvar VAR_0x8004, FRONTIER_UTIL_FUNC_SAVE_PARTY
 	special CallFrontierUtilFunc
 	special LoadPlayerParty

@@ -17,7 +17,15 @@ Route102_EventScript_Boy::
 	msgbox Route102_Text_CatchWholeBunchOfPokemon, MSGBOX_NPC
 	end
 
+
 Route102_EventScript_Calvin::
+	cant_see_if_trainerflag_set TRAINER_CALVIN_1
+	checktrainerflag TRAINER_CALVIN_1
+	goto_if FALSE, Route102_EventScript_CalvinBattle
+	goto Route102_EventScript_BeatCalvin
+	end
+
+Route102_EventScript_CalvinBattle::
     cant_see_if_trainerflag_set TRAINER_CALVIN_1
 	special SavePlayerParty
 	setvar VAR_0x8005, FRONTIER_DOUBLES_PARTY_SIZE
@@ -25,6 +33,14 @@ Route102_EventScript_Calvin::
 	special ChoosePartyForBattleFrontier
 	waitstate
 	vgc_double_battle TRAINER_CALVIN_1, Route102_Text_CalvinDefeated
+	switch VAR_RESULT
+	case 1, Route102_EventScript_BeatCalvin
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
+
+Route102_EventScript_BeatCalvin::
+	settrainerflag TRAINER_CALVIN_1
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	goto_if_eq VAR_RESULT, TRUE, Route102_EventScript_CalvinRematch
 	setvar VAR_0x8004, TRAINER_CALVIN_1
