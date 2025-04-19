@@ -1060,6 +1060,8 @@ const u8 *BattleSetup_ConfigureTrainerBattle(const u8 *data)
         gNoOfApproachingTrainers = 2; // set TWO_OPPONENTS gBattleTypeFlags
         gApproachingTrainerId = 1; // prevent trainer approach
         return EventScript_DoNoIntroTrainerBattle;
+    case TRAINER_BATTLE_SET_TRAINER_FOR_VGC:
+        return sTrainerBattleEndScript;
     default:
         if (gApproachingTrainerId == 0)
         {

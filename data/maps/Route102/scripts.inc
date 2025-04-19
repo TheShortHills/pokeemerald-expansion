@@ -17,7 +17,6 @@ Route102_EventScript_Boy::
 	msgbox Route102_Text_CatchWholeBunchOfPokemon, MSGBOX_NPC
 	end
 
-
 Route102_EventScript_Calvin::
     cant_see_if_trainerflag_set TRAINER_CALVIN_1
 	special SavePlayerParty
@@ -25,10 +24,7 @@ Route102_EventScript_Calvin::
 	fadescreen FADE_TO_BLACK
 	special ChoosePartyForBattleFrontier
 	waitstate
-	goto Route102_EventScript_CalvinBattle
-
-Route102_EventScript_CalvinBattle::
-	trainerbattle_double TRAINER_CALVIN_1, Route102_Text_CalvinIntro, Route102_Text_CalvinDefeated, Route102_EventScript_CalvinRegisterMatchCallAfterBattle
+	vgc_double_battle TRAINER_CALVIN_1, Route102_Text_CalvinDefeated
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	goto_if_eq VAR_RESULT, TRUE, Route102_EventScript_CalvinRematch
 	setvar VAR_0x8004, TRAINER_CALVIN_1

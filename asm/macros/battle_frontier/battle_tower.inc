@@ -119,6 +119,22 @@
 	multi_do MULTI_BATTLE_2_VS_2, \partnerId
 	.endm
 
+	.macro vgc_double_battle trainer1Id:req, trainer1LoseText:req
+	special SavePlayerParty
+	trainerbattle TRAINER_BATTLE_SET_TRAINER_FOR_VGC, OBJ_ID_NONE, \trainer1Id, NULL, \trainer1LoseText, NULL, OBJ_ID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, NULL, TRUE, TRUE, FALSE, FALSE
+	special ReducePlayerPartyToSelectedMons
+	setvar VAR_0x8004, FRONTIER_UTIL_FUNC_SET_DATA
+	setvar VAR_0x8005, FRONTIER_DATA_SELECTED_MON_ORDER
+	special CallFrontierUtilFunc @ saves the mon order, so the non-selected mons get restored afterwards
+	setvar VAR_0x8004, SPECIAL_BATTLE_VGC
+	special DoSpecialTrainerBattle
+	waitstate
+	settrainerflag \trainer1Id
+	setvar VAR_0x8004, FRONTIER_UTIL_FUNC_SAVE_PARTY
+	special CallFrontierUtilFunc
+	special LoadPlayerParty
+	.endm
+
 	.macro multi_2_vs_1 trainer1Id:req, trainer1LoseText:req, partnerId:req
 	special SavePlayerParty
 	trainerbattle TRAINER_BATTLE_SET_TRAINERS_FOR_MULTI_BATTLE, OBJ_ID_NONE, \trainer1Id, NULL, \trainer1LoseText, NULL, OBJ_ID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, NULL, FALSE, TRUE, FALSE, FALSE

@@ -1947,6 +1947,13 @@ static void HandleSpecialTrainerBattleEnd(void)
                 gSaveBlock1Ptr->playerParty[i] = gPlayerParty[i];
         }
         break;
+    case SPECIAL_BATTLE_VGC:
+        for (i = 0; i < 3; i++)
+        {
+            if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES))
+                gSaveBlock1Ptr->playerParty[i] = gPlayerParty[i];
+        }
+        break;
     }
 
     SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
@@ -2106,7 +2113,16 @@ void DoSpecialTrainerBattle(void)
         if (gSpecialVar_0x8005 & MULTI_BATTLE_CHOOSE_MONS) // Skip mons restoring(done in the script)
             gBattleScripting.specialTrainerBattleType = 0xFF;
         break;
+    case SPECIAL_BATTLE_VGC:
+        gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLE;
+        CreateTask(Task_StartBattleAfterTransition, 1);
+        PlayMapChosenOrBattleBGM(0);
+        BattleTransition_StartOnField(GetTrainerBattleTransition());
+        gBattleScripting.specialTrainerBattleType = 0xFF;
+        break;
     }
+   
+
 }
 
 static void SaveCurrentWinStreak(void)

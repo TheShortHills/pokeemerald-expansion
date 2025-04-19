@@ -7077,7 +7077,7 @@ static u8 CheckBattleEntriesAndGetMessage(void)
         for (j = i + 1; j < maxBattlers; j++)
         {
             if (species == GetMonData(&party[order[j] - 1], MON_DATA_SPECIES))
-                return PARTY_MSG_MONS_CANT_BE_SAME;
+                //return PARTY_MSG_MONS_CANT_BE_SAME;
             if (item != ITEM_NONE && item == GetMonData(&party[order[j] - 1], MON_DATA_HELD_ITEM))
                 return PARTY_MSG_NO_SAME_HOLD_ITEMS;
         }
@@ -7147,7 +7147,7 @@ static u8 GetMinBattleEntries(void)
     case FACILITY_UNION_ROOM:
         return UNION_ROOM_PARTY_SIZE;
     default: // Battle Frontier
-        return gSpecialVar_0x8005;
+        return 1;
     }
 }
 
