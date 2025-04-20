@@ -27,6 +27,8 @@ Route103_EventScript_Rival::
 	end
 
 Route103_EventScript_RivalMay::
+	setvar VAR_0x8003, 1
+	setvar VAR_0x8004, 15
 	msgbox Route103_Text_MayRoute103Pokemon, MSGBOX_DEFAULT
 	closemessage
 	playbgm MUS_ENCOUNTER_MAY, TRUE
@@ -44,6 +46,8 @@ Route103_EventScript_RivalMay::
 	end
 
 Route103_EventScript_RivalBrendan::
+	setvar VAR_0x8003, 1
+	setvar VAR_0x8004, 15
 	msgbox Route103_Text_BrendanRoute103Pokemon, MSGBOX_DEFAULT
 	closemessage
 	playbgm MUS_ENCOUNTER_BRENDAN, TRUE

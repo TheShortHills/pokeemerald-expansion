@@ -2426,6 +2426,16 @@ void ShowScrollableMultichoice(void)
         task->tKeepOpenAfterSelect = FALSE;
         task->tTaskId = taskId;
         break;
+    case SCROLL_MULTI_BP_DRUGS:
+        task->tMaxItemsOnScreen = MAX_SCROLL_MULTI_ON_SCREEN;
+        task->tNumItems = 11;
+        task->tLeft = 14;
+        task->tTop = 1;
+        task->tWidth = 15;
+        task->tHeight = 12;
+        task->tKeepOpenAfterSelect = FALSE;
+        task->tTaskId = taskId;
+        break;
     default:
         gSpecialVar_Result = MULTI_B_PRESSED;
         DestroyTask(taskId);
@@ -2591,6 +2601,20 @@ static const u8 *const sScrollableMultichoiceOptions[][MAX_SCROLL_MULTI_LENGTH] 
     {
         COMPOUND_STRING("RAIN DANCE{CLEAR_TO 0x5E}3BP"),
         COMPOUND_STRING("SUNNY DAY{CLEAR_TO 0x5E}3BP"),
+        gText_Exit
+    },
+    [SCROLL_MULTI_BP_DRUGS] =
+    {
+        COMPOUND_STRING("HP IV{CLEAR_TO 0x5E}1BP"),
+        COMPOUND_STRING("ATK UP IV{CLEAR_TO 0x5E}1BP"),
+        COMPOUND_STRING("ATK DWN IV{CLEAR_TO 0x5E}1BP"),
+        COMPOUND_STRING("DEF IV{CLEAR_TO 0x5E}1BP"),
+        COMPOUND_STRING("SP ATK IV{CLEAR_TO 0x5E}1BP"),
+        COMPOUND_STRING("SP DEF IV{CLEAR_TO 0x5E}1BP"),
+        COMPOUND_STRING("SPD UP IV{CLEAR_TO 0x5E}1BP"),
+        COMPOUND_STRING("SPD DWN IV{CLEAR_TO 0x5E}1BP"),
+        COMPOUND_STRING("Abil Capsule{CLEAR_TO 0x5E}2BP"),
+        COMPOUND_STRING("Abil Patch{CLEAR_TO 0x5E}3BP"),
         gText_Exit
     },
 };

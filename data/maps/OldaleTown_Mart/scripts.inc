@@ -18,14 +18,6 @@ OldaleTown_Mart_Pokemart_Basic:
 	.2byte ITEM_ANTIDOTE
 	.2byte ITEM_PARALYZE_HEAL
 	.2byte ITEM_AWAKENING
-	.2byte ITEM_HP_IV_VITAMIN
-	.2byte ITEM_ATKUP_IV_VITAMIN
-	.2byte ITEM_ATKDWN_IV_VITAMIN
-	.2byte  ITEM_DEF_IV_VITAMIN 
-    .2byte  ITEM_SPATK_IV_VITAMIN 
-    .2byte  ITEM_SPDEF_IV_VITAMIN 
-    .2byte  ITEM_SPDUP_IV_VITAMIN 
-    .2byte  ITEM_SPDDWN_IT_VITAMIN 
 	pokemartlistend
 
 OldaleTown_Mart_ExpandedItems::
@@ -58,6 +50,7 @@ BP_Mart_EventScript_TryPurchasePrize::
 	specialvar VAR_TEMP_1, GetFrontierBattlePoints
 	goto_if_ge VAR_TEMP_1, VAR_0x8008, BattleFrontier_ExchangeServiceCorner_EventScript_TryGiveItem
 	msgbox BP_Mart_Text_DontHaveEnoughPoints, MSGBOX_DEFAULT
+	goto_if_eq VAR_TEMP_2, BP_MART_DRUGS_CLERK, BP_Mart_EventScript_ChooseDrugs
 	goto BP_Mart_EventScript_ChooseTM
 	end
 
@@ -70,6 +63,7 @@ BP_Mart_EventScript_TryGiveItem::
 	special UpdateBattlePointsWindow
 	playse SE_SHOP
 	msgbox BP_Mart_Text_HereIsYourPrize, MSGBOX_DEFAULT
+	goto_if_eq VAR_TEMP_2, BP_MART_DRUGS_CLERK, BP_Mart_EventScript_ChooseDrugs
 	goto BP_Mart_EventScript_ChooseTM
 	end
 
@@ -103,7 +97,7 @@ BP_Mart_EventScript_ChooseTM::
 BP_Mart_EventScript_RainDance::
 	msgbox BP_Mart_Text_ConfirmRainDance, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, BP_Mart_EventScript_ChooseTM
-	setvar VAR_0x8008, 2
+	setvar VAR_0x8008, 3
 	setvar VAR_0x8009, ITEM_TM_RAIN_DANCE
 	goto BP_Mart_EventScript_TryPurchasePrize
 	end
@@ -111,11 +105,120 @@ BP_Mart_EventScript_RainDance::
 BP_Mart_EventScript_SunnyDay::
 	msgbox BP_Mart_Text_ConfirmSunnyDay, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, BP_Mart_EventScript_ChooseTM
-	setvar VAR_0x8008, 2
+	setvar VAR_0x8008, 3
 	setvar VAR_0x8009, ITEM_TM_SUNNY_DAY
 	goto BP_Mart_EventScript_TryPurchasePrize
 	end
-	
+
+BP_Mart_EventScript_DrugsClerk::
+	lock
+	faceplayer
+	setvar VAR_TEMP_2, BP_MART_DRUGS_CLERK
+	call BP_Mart_EventScript_ClerkWelcome
+	goto BP_Mart_EventScript_ChooseDrugs
+	end
+
+BP_Mart_EventScript_ChooseDrugs::
+	setvar VAR_0x8004, SCROLL_MULTI_BP_DRUGS
+	special ShowFrontierExchangeCornerItemIconWindow
+	special ShowScrollableMultichoice
+	waitstate
+	special CloseFrontierExchangeCornerItemIconWindow
+	switch VAR_RESULT
+	case 0, BP_Mart_EventScript_HP_IV
+	case 1, BP_Mart_EventScript_ATK_UP_IV
+	case 2, BP_Mart_EventScript_ATK_DWN_IV
+	case 3, BP_Mart_EventScript_DEF_IV
+	case 4, BP_Mart_EventScript_SP_ATK_IV
+	case 5, BP_Mart_EventScript_SP_DEF_IV
+	case 6, BP_Mart_EventScript_SPD_UP_IV
+	case 7, BP_Mart_EventScript_SPD_DWN_IV
+	case 8, BP_Mart_EventScript_ABIL_CAP
+	case 9, BP_Mart_EventScript_ABIL_PATCH
+	case 10, BP_Mart_EventScript_ClerkGoodbye
+	case MULTI_B_PRESSED, BP_Mart_EventScript_ClerkGoodbye
+	end
+
+BP_Mart_EventScript_HP_IV::
+	msgbox BP_Mart_Text_ConfirmVitamin, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, BP_Mart_EventScript_ChooseDrugs
+	setvar VAR_0x8008, 1
+	setvar VAR_0x8009, ITEM_HP_IV_VITAMIN
+	goto BP_Mart_EventScript_TryPurchasePrize
+	end
+
+BP_Mart_EventScript_ATK_UP_IV::
+	msgbox BP_Mart_Text_ConfirmVitamin, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, BP_Mart_EventScript_ChooseDrugs
+	setvar VAR_0x8008, 1
+	setvar VAR_0x8009, ITEM_ATKUP_IV_VITAMIN
+	goto BP_Mart_EventScript_TryPurchasePrize
+	end
+
+BP_Mart_EventScript_ATK_DWN_IV::
+	msgbox BP_Mart_Text_ConfirmVitamin, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, BP_Mart_EventScript_ChooseDrugs
+	setvar VAR_0x8008, 1
+	setvar VAR_0x8009, ITEM_ATKDWN_IV_VITAMIN
+	goto BP_Mart_EventScript_TryPurchasePrize
+	end
+
+BP_Mart_EventScript_DEF_IV::
+	msgbox BP_Mart_Text_ConfirmVitamin, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, BP_Mart_EventScript_ChooseDrugs
+	setvar VAR_0x8008, 1
+	setvar VAR_0x8009, ITEM_DEF_IV_VITAMIN 
+	goto BP_Mart_EventScript_TryPurchasePrize
+	end
+
+BP_Mart_EventScript_SP_ATK_IV::
+	msgbox BP_Mart_Text_ConfirmVitamin, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, BP_Mart_EventScript_ChooseDrugs
+	setvar VAR_0x8008, 1
+	setvar VAR_0x8009, ITEM_SPATK_IV_VITAMIN
+	goto BP_Mart_EventScript_TryPurchasePrize
+	end
+
+BP_Mart_EventScript_SP_DEF_IV::
+	msgbox BP_Mart_Text_ConfirmVitamin, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, BP_Mart_EventScript_ChooseDrugs
+	setvar VAR_0x8008, 1
+	setvar VAR_0x8009, ITEM_SPDEF_IV_VITAMIN 
+	goto BP_Mart_EventScript_TryPurchasePrize
+	end
+
+BP_Mart_EventScript_SPD_UP_IV::
+	msgbox BP_Mart_Text_ConfirmVitamin, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, BP_Mart_EventScript_ChooseDrugs
+	setvar VAR_0x8008, 1
+	setvar VAR_0x8009, ITEM_SPDUP_IV_VITAMIN 
+	goto BP_Mart_EventScript_TryPurchasePrize
+	end
+
+BP_Mart_EventScript_SPD_DWN_IV::
+	msgbox BP_Mart_Text_ConfirmVitamin, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, BP_Mart_EventScript_ChooseDrugs
+	setvar VAR_0x8008, 1
+	setvar VAR_0x8009, ITEM_SPDDWN_IV_VITAMIN 
+	goto BP_Mart_EventScript_TryPurchasePrize
+	end
+
+BP_Mart_EventScript_ABIL_CAP::
+	msgbox BP_Mart_Text_ConfirmCap, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, BP_Mart_EventScript_ChooseDrugs
+	setvar VAR_0x8008, 2
+	setvar VAR_0x8009, ITEM_ABILITY_CAPSULE
+	goto BP_Mart_EventScript_TryPurchasePrize
+	end
+
+BP_Mart_EventScript_ABIL_PATCH::
+	msgbox BP_Mart_Text_ConfirmPat, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, BP_Mart_EventScript_ChooseDrugs
+	setvar VAR_0x8008, 3
+	setvar VAR_0x8009, ITEM_ABILITY_PATCH
+	goto BP_Mart_EventScript_TryPurchasePrize
+	end
+
 OldaleTown_Mart_EventScript_Woman::
 	lock
 	faceplayer
@@ -165,6 +268,18 @@ BP_Mart_Text_ConfirmRainDance:
 
 BP_Mart_Text_ConfirmSunnyDay:
 	.string "You've chosen Sunny Day.\n"
+	.string "Is that correct?$"
+
+BP_Mart_Text_ConfirmVitamin:
+	.string "You've chosen a Vitamin.\n"
+	.string "Is that correct?$"
+
+BP_Mart_Text_ConfirmCap:
+	.string "You've chosen a Capsule.\n"
+	.string "Is that correct?$"
+
+BP_Mart_Text_ConfirmPat:
+	.string "You've chosen a Patch.\n"
 	.string "Is that correct?$"
 
 BP_Mart_Text_DontHaveEnoughPoints:

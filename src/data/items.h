@@ -14219,7 +14219,7 @@ const struct Item gItemsInfo[] =
         .iconPalette = gItemIconPalette_Carbos,
     },
 
-    [ITEM_SPDDWN_IT_VITAMIN] =
+    [ITEM_SPDDWN_IV_VITAMIN] =
     {
         .name = _("SPD DWN IV Vitamin"),
         .price = 100,
