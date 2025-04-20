@@ -43,6 +43,79 @@ OldaleTown_Mart_Pokemart_Expanded:
 	.2byte ITEM_AWAKENING
 	pokemartlistend
 
+BP_Mart_EventScript_ClerkWelcome::
+	msgbox BP_Mart_Text_WelcomePleaseChoosePrize, MSGBOX_DEFAULT
+	special ShowBattlePointsWindow
+	return
+
+BP_Mart_EventScript_ClerkGoodbye::
+	msgbox BP_Mart_Text_ThankYouVisitWithPoints, MSGBOX_DEFAULT
+	special CloseBattlePointsWindow
+	release
+	end
+
+BP_Mart_EventScript_TryPurchasePrize::
+	specialvar VAR_TEMP_1, GetFrontierBattlePoints
+	goto_if_ge VAR_TEMP_1, VAR_0x8008, BattleFrontier_ExchangeServiceCorner_EventScript_TryGiveItem
+	msgbox BP_Mart_Text_DontHaveEnoughPoints, MSGBOX_DEFAULT
+	goto BP_Mart_EventScript_ChooseTM
+	end
+
+BP_Mart_EventScript_TryGiveItem::
+	checkitemspace VAR_0x8009
+	goto_if_eq VAR_RESULT, FALSE, BattleFrontier_ExchangeServiceCorner_EventScript_BagFull
+	copyvar VAR_0x8004, VAR_0x8008
+	special TakeFrontierBattlePoints
+	additem VAR_0x8009
+	special UpdateBattlePointsWindow
+	playse SE_SHOP
+	msgbox BP_Mart_Text_HereIsYourPrize, MSGBOX_DEFAULT
+	goto BP_Mart_EventScript_ChooseTM
+	end
+
+BP_Mart_EventScript_BagFull::
+	msgbox BP_Mart_Text_DontHaveSpaceToHoldIt, MSGBOX_DEFAULT
+	special CloseBattlePointsWindow
+	release
+	end
+
+BP_Mart_EventScript_TMClerk::
+	lock
+	faceplayer
+	setvar VAR_TEMP_2, BP_MART_TM_CLERK
+	call BP_Mart_EventScript_ClerkWelcome
+	goto BP_Mart_EventScript_ChooseTM
+	end
+
+BP_Mart_EventScript_ChooseTM::
+	setvar VAR_0x8004, SCROLL_MULTI_BP_TMS
+	special ShowFrontierExchangeCornerItemIconWindow
+	special ShowScrollableMultichoice
+	waitstate
+	special CloseFrontierExchangeCornerItemIconWindow
+	switch VAR_RESULT
+	case 0, BP_Mart_EventScript_RainDance
+	case 1, BP_Mart_EventScript_SunnyDay
+	case 2, BP_Mart_EventScript_ClerkGoodbye
+	case MULTI_B_PRESSED, BP_Mart_EventScript_ClerkGoodbye
+	end
+
+BP_Mart_EventScript_RainDance::
+	msgbox BP_Mart_Text_ConfirmRainDance, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, BP_Mart_EventScript_ChooseTM
+	setvar VAR_0x8008, 2
+	setvar VAR_0x8009, ITEM_TM_RAIN_DANCE
+	goto BP_Mart_EventScript_TryPurchasePrize
+	end
+
+BP_Mart_EventScript_SunnyDay::
+	msgbox BP_Mart_Text_ConfirmSunnyDay, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, BP_Mart_EventScript_ChooseTM
+	setvar VAR_0x8008, 2
+	setvar VAR_0x8009, ITEM_TM_SUNNY_DAY
+	goto BP_Mart_EventScript_TryPurchasePrize
+	end
+	
 OldaleTown_Mart_EventScript_Woman::
 	lock
 	faceplayer
@@ -74,3 +147,33 @@ OldaleTown_Mart_Text_RestoreHPWithPotion:
 	.string "To prevent your POKéMON from fainting,\n"
 	.string "restore its HP with a POTION.$"
 
+BP_Mart_Text_WelcomePleaseChoosePrize:
+	.string "Hello, this is the Battle Leauge\n"
+	.string "Reward Program.\p"
+	.string "We exchange the Battle Points you\n"
+	.string "have collected for lovely prizes.\p"
+	.string "Please choose a prize from this list.$"
+
+BP_Mart_Text_ThankYouVisitWithPoints:
+	.string "Thank you very much.\p"
+	.string "Please visit us when you have\n"
+	.string "saved up Battle Points.$"
+
+BP_Mart_Text_ConfirmRainDance:
+	.string "You've chosen Rain Dance.\n"
+	.string "Is that correct?$"
+
+BP_Mart_Text_ConfirmSunnyDay:
+	.string "You've chosen Sunny Day.\n"
+	.string "Is that correct?$"
+
+BP_Mart_Text_DontHaveEnoughPoints:
+	.string "I'm so sorry…\n"
+	.string "You don't have enough Battle Points…$"
+
+BP_Mart_Text_DontHaveSpaceToHoldIt:
+	.string "I'm so sorry…\n"
+	.string "You don't have space to hold it…$"
+
+BP_Mart_Text_HereIsYourPrize:
+	.string "Here is your prize!$"

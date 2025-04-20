@@ -116,6 +116,7 @@
 #define EXCHANGE_CORNER_DECOR2_CLERK     1
 #define EXCHANGE_CORNER_VITAMIN_CLERK    2
 #define EXCHANGE_CORNER_HOLD_ITEM_CLERK  3
+#define BP_MART_TM_CLERK 4
 
 // unused
 #define F_EV_SPREAD_HP         (1 << 0)

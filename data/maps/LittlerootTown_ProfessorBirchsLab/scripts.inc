@@ -130,6 +130,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_NicknameStarter::
 	end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_GoSeeRival::
+	setflag FLAG_SYS_FRONTIER_PASS
 	bufferspeciesname STR_VAR_1, SPECIES_EEVEE
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_EEVEE
 	givemon SPECIES_EEVEE, 5
