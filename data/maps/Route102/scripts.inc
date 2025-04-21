@@ -32,6 +32,8 @@ Route102_EventScript_CalvinBattle::
 	fadescreen FADE_TO_BLACK
 	special ChoosePartyForBattleFrontier
 	waitstate
+	setvar VAR_0x8003, 1
+	setvar VAR_0x8004, 1
 	vgc_double_battle TRAINER_CALVIN_1, Route102_Text_CalvinDefeated
 	switch VAR_RESULT
 	case 1, Route102_EventScript_BeatCalvin

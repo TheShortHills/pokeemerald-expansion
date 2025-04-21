@@ -48,7 +48,7 @@ BP_Mart_EventScript_ClerkGoodbye::
 
 BP_Mart_EventScript_TryPurchasePrize::
 	specialvar VAR_TEMP_1, GetFrontierBattlePoints
-	goto_if_ge VAR_TEMP_1, VAR_0x8008, BattleFrontier_ExchangeServiceCorner_EventScript_TryGiveItem
+	goto_if_ge VAR_TEMP_1, VAR_0x8008, BP_Mart_EventScript_TryGiveItem
 	msgbox BP_Mart_Text_DontHaveEnoughPoints, MSGBOX_DEFAULT
 	goto_if_eq VAR_TEMP_2, BP_MART_DRUGS_CLERK, BP_Mart_EventScript_ChooseDrugs
 	goto BP_Mart_EventScript_ChooseTM

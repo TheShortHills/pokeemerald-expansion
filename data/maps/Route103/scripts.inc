@@ -27,8 +27,6 @@ Route103_EventScript_Rival::
 	end
 
 Route103_EventScript_RivalMay::
-	setvar VAR_0x8003, 1
-	setvar VAR_0x8004, 15
 	msgbox Route103_Text_MayRoute103Pokemon, MSGBOX_DEFAULT
 	closemessage
 	playbgm MUS_ENCOUNTER_MAY, TRUE
@@ -46,8 +44,6 @@ Route103_EventScript_RivalMay::
 	end
 
 Route103_EventScript_RivalBrendan::
-	setvar VAR_0x8003, 1
-	setvar VAR_0x8004, 15
 	msgbox Route103_Text_BrendanRoute103Pokemon, MSGBOX_DEFAULT
 	closemessage
 	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
@@ -65,31 +61,43 @@ Route103_EventScript_RivalBrendan::
 	end
 
 Route103_EventScript_StartMayBattleTreecko::
+	setvar VAR_0x8003, 1
+	setvar VAR_0x8004, 1
 	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_TREECKO, Route103_Text_MayDefeated
 	goto Route103_EventScript_AfterMayBattle
 	end
 
 Route103_EventScript_StartMayBattleTorchic::
+	setvar VAR_0x8003, 1
+	setvar VAR_0x8004, 1
 	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_TORCHIC, Route103_Text_MayDefeated
 	goto Route103_EventScript_AfterMayBattle
 	end
 
 Route103_EventScript_StartMayBattleMudkip::
+	setvar VAR_0x8003, 1
+	setvar VAR_0x8004, 1
 	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_MUDKIP, Route103_Text_MayDefeated
 	goto Route103_EventScript_AfterMayBattle
 	end
 
 Route103_EventScript_StartBrendanBattleTreecko::
+	setvar VAR_0x8003, 1
+	setvar VAR_0x8004, 1
 	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_TREECKO, Route103_Text_BrendanDefeated
 	goto Route103_EventScript_AfterBrendanBattle
 	end
 
 Route103_EventScript_StartBrendanBattleTorchic::
+	setvar VAR_0x8003, 1
+	setvar VAR_0x8004, 1
 	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_TORCHIC, Route103_Text_BrendanDefeated
 	goto Route103_EventScript_AfterBrendanBattle
 	end
 
 Route103_EventScript_StartBrendanBattleMudkip::
+	setvar VAR_0x8003, 1
+	setvar VAR_0x8004, 1
 	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_MUDKIP, Route103_Text_BrendanDefeated
 	goto Route103_EventScript_AfterBrendanBattle
 	end
